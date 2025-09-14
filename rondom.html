@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>乱数発生</title>
+  </head>
+  <body>
+  	<button id="counter">おせば乱数発生</button>
+  	<p><span id="randomNum">ここに乱数が表示されます</span><p>	
+  	<script>
+  		let elm = document.querySelector('#counter');
+  		elm.addEventListener('click', () =>{
+  			let item = document.querySelector('#randomNum');
+  			let num = Math.floor( Math.random() * 100 ) + 1;  //１～９９までの整数
+  			item.innerHTML = num;
+  			}
+  		);
+  	</script>
+  </body>
+</html>
