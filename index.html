@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Shouta Ishikuro</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Shouta Ishikuroのポートフォリオサイトです。">
-<meta name="keywords" content="Shouta Ishikuro,ポートフォリオ,Webデザイン,HTML,CSS,JavaScript">
-<link rel="stylesheet" href="css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Shouta Ishikuro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Shouta Ishikuroのポートフォリオサイトです。"
+    />
+    <meta
+      name="keywords"
+      content="Shouta Ishikuro,ポートフォリオ,Webデザイン,HTML,CSS,JavaScript"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
+    <div id="container">
+      <header>
+        <h1 id="logo">
+          <a href="index.html"
+            ><img src="images/Shouta Ishikuro.png" alt="SAMPLE SITE"
+          /></a>
+        </h1>
+      </header>
 
-<div id="container">
+      <nav id="menubar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <!--<li><a href="link.html">Link</a></li>-->
+        </ul>
+      </nav>
+      <aside id="mainimg"><img src="images/mainimg.jpg" alt="" /></aside>
+      <div id="contents">
+        <section id="new">
+          <h2>Information</h2>
+          <dl>
+            <dt>2025/09/14</dt>
+            <dd>New website has launched</dd>
+          </dl>
 
-<header>
-<h1 id="logo"><a href="index.html"><img src="images/Shouta Ishikuro.png" alt="SAMPLE SITE"></a></h1>
+          <h2>About</h2>
+          <p>Shouta Ishikuro</p>
+          <p>I am a developer.</p>
 
-</header>
-
-<nav id="menubar">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="portfolio.html">Portfolio</a></li>
-<!--<li><a href="link.html">Link</a></li>-->
-</ul>
-</nav>
-<aside id="mainimg"><img src="images/mainimg.jpg" alt=""></aside>
-<div id="contents">
-
-<section id="new">
-<h2>Information</h2>
-<dl>
-<dt>2025/09/14</dt>
-<dd>New website has launched</dd>
-</dl>
-
-<h2>About</h2>
-<p>Shouta Ishikuro</p>
-<p>I am a developer.</p>
-
-
-      <h2>Portfolio</h2>
+          <h2>Portfolio</h2>
 
           <div class="list">
             <!--<img src="images/sample1.jpg">-->
@@ -59,12 +64,17 @@
           </div>
           <div class="list">
             <h4>Flask Web App</h4>
-            <p><a href="https://myflask-9t0e.onrender.com">https://myflask-9t0e.onrender.com</a></p>
+            <p>
+              <a href="https://myflask-9t0e.onrender.com"
+                >https://myflask-9t0e.onrender.com</a
+              >
+            </p>
           </div>
+      　　<h2>Contact</h2>
+      　　<a href="mailto:shota_ishikuro@outlook.com">Contact us</p>
+        </section>
 
-      </section>
-
-<!--
+        <!--
 <section>
 
 <h2>テンプレートのご利用前に必ずお読み下さい</h2>
@@ -81,18 +91,22 @@
 
 </section>
 -->
+      </div>
+      <!--/contents-->
 
-</div>
-<!--/contents-->
-
-<footer>
-    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'F1F31KA1MA');kofiwidget2.draw();</script> 
-<!--<small>Copyright&copy; <a href="index.html">Shouta Ishikuro</a> All Rights Reserved.</small>-->
-<!--<span class="pr">《<a href="https://template-party.com/" target="_blank">Web Design:Template-Party</a>》</span>-->
-</footer>
-
-</div>
-<!--/container-->
-
-</body>
+      <footer>
+        <script
+          type="text/javascript"
+          src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+        ></script>
+        <script type="text/javascript">
+          kofiwidget2.init("Support me on Ko-fi", "#72a4f2", "F1F31KA1MA");
+          kofiwidget2.draw();
+        </script>
+        <!--<small>Copyright&copy; <a href="index.html">Shouta Ishikuro</a> All Rights Reserved.</small>-->
+        <!--<span class="pr">《<a href="https://template-party.com/" target="_blank">Web Design:Template-Party</a>》</span>-->
+      </footer>
+    </div>
+    <!--/container-->
+  </body>
 </html>
