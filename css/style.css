@@ -92,6 +92,7 @@ header {
 	color: #fff;		/*文字色*/
 	padding: 10px 20px;	/*上下、左右への余白*/
 	background: #d08047;	/*背景色*/
+	margin-top: 10px;
 	border-radius: 10px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
 }
 /*コンテンツのh3タグの設定*/
@@ -125,7 +126,7 @@ header {
 .list {
 	overflow: hidden;
 	border-bottom: 1px solid #ccc;	/*下線の幅、線種、色*/
-	padding: 20px;	/*ボックス内の余白*/
+	padding: 10px;	/*ボックス内の余白*/
 }
 /*h4見出しの設定*/
 .list h4 {
