@@ -28,44 +28,86 @@
 </head>
 
 <body>
-
   <nav>
     <a href="#home" id="link-home">Home</a>
     <a href="#about" id="link-about">About</a>
     <a href="#contact" id="link-contact">Contact</a>
   </nav>
-
   <div id="app"></div>
-
   <script>
     // ページごとのコンテンツ定義
-
     const homeContent = `
     <h2>Home</h2>
     <p>I’m Shouta Ishikuro.</p>
     <p>I develop applications as a hobby, not professionally.</p>
-    <h2>Portfolio</h2>
-    <h4>Niconico's most popular 3 videos</h4>
-    <p>
-    <a href="https://give-fun.netlify.app/">https://give-fun.netlify.app</a>
-    </p>
-    <h4>Rondom number generator</h4>
-    <p><a href="./rondom.html">Rondom number generator</a></p>
-    <h4>Flask Web App</h4>
-    <p>
-      <a href="https://myflask-9t0e.onrender.com">https://myflask-9t0e.onrender.com</a>
-    </p>
-    <h4>今日の紅茶</h4>
-    <p>
-      <a href="https://script.google.com/macros/s/AKfycbxkWmOO2CCZWPg2HkZb6D73mqzwtwuCRVFu-wHGIav3q9vxldm5Qk-zoHGo-ZDUVIit3A/exec">https://script.google.com/macros/s/AKfycbxkWmOO2CCZWPg2HkZb6D73mqzwtwuCRVFu-wHGIav3q9vxldm5Qk-zoHGo-ZDUVIit3A/exec</a>
-      </p>
-    <h2>Sporiyfy</h2>
+    <hr>
+    <h3>Favorite</h3>
+    <ul>
+      <li>
+    <h4>YouTube Channels</h4>
+    <ul>
+      <li><a href="https://www.youtube.com/channel/UCXuqSBlHAE6Xw-yeJA0Tunw">Kurzgesagt – In a Nutshell</a></li>
+      <li><a href="https://www.youtube.com/user/CGPGrey">CGP Grey</a></li>
+      <li><a href="https://www.youtube.com/user/Vsauce">Vsauce</a></li>
+      <li><a href="https://www.youtube.com/user/Numberphile">Numberphile</a></li>
+    </ul>
+    </li>
+    <li>
+    <h4>Games</h4>
+    <ul>
+      <li><a href="https://www.nintendo.co.jp/switch/av5ja/index.html">ゼルダの伝説 ブレス オブ ザ ワイルド/The Legend of Zelda: Breath of the Wild</a></li>
+      <li><a href="https://www.nintendo.co.jp/switch/av5ja/index.html">ゼルダの伝説 ティアーズ オブ ザ キングダム/The Legend of Zelda: Tears of the Kingdom</a></li>
+      <li><a href="https://genshin.hoyoverse.com">原神/Genshin Impact</a></li>
+    </ul>
+    </li>
+    <h4>Movies</h4>
+    <ul>
+      <li><a href="https://www.imdb.com/title/tt1375666/">Inception</a></li>
+      <li><a href="https://www.imdb.com/title/tt0816692/">Interstellar</a></li>
+      <li><a href="https://www.imdb.com/title/tt0137523/">Fight Club</a></li>  
+    </ul>
+    </li>
+    <li>
+    <h4>Books</h4>
+    <ul>
+      <li><a href="https://www.goodreads.com/book/show/4671.The_Great_Gatsby">The Great Gatsby</a></li>
+      <li><a href="https://www.goodreads.com/book/show/2657.To_Kill_a_Mockingbird">To Kill a Mockingbird</a></li>
+      <li><a href="https://www.goodreads.com/book/show/1885.Pride_and_Prejudice">Pride and Prejudice</a></li>
+    </ul>
+    </li>
+    </ul>
+    <hr>
+    <h3>Skills</h3>
+    <ul>
+      <li>C#</li>
+      <li>JavaScript</li>
+      <li>HTML/CSS</li>
+      <li>React</li>
+      <li>Node.js</li>
+      </ul>
 
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5f39xcRg0yB60U8cZn3Xxp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  `;
+    <h3>Portfolio</h3>
+    <ul>
+      <li><p><a href="https://shota1496.github.io/teatime/">Tea Time</a></p></li>
+    <li><p><a href="https://script.google.com/macros/s/AKfycbxkWmOO2CCZWPg2HkZb6D73mqzwtwuCRVFu-wHGIav3q9vxldm5Qk-zoHGo-ZDUVIit3A/exec">今日の紅茶</a></p></li>
+    </ul>
+
+      
+      <hr>
+      <h3>Education</h3>
+    <p>University of Tokyo, Computer Science</p>
+    <h3>Experience</h3>
+    <p>Internship at XYZ Company</p>
+    <p>Part-time job at ABC Corporation</p>
+    <p>Volunteer work at DEF Organization</p>
+    <h3>Hobbies</h3>
+    <p>Coding, Traveling, Cooking</p>
+    <p>Feel free to explore my portfolio and contact me for any inquiries!</p>
+    <hr>
+      `;
     const routes = {
       home: homeContent,
-      about: "<h2>About</h2><p>This is a simple SPA without any framework.</p>",
+      about: "<h2>About</h2><p>This is a simple Single Page Application (SPA) built with vanilla JavaScript. It demonstrates basic routing and dynamic content rendering without using any frameworks.</p><p>Feel free to explore my portfolio and contact me for any inquiries!</p><p>You can chack source code of this website by downloading from <a href=\https://github.com/shota1496/mypage>GitHub</a>.</p>",
       contact: "<h2>Contact</h2><p><a href=\"mailto:shota_ishikuro@outlook.com\">Contact us</a></p>",
     };
 
@@ -89,7 +131,5 @@
     // 初期表示
     renderPage();
   </script>
-
 </body>
-
 </html>
