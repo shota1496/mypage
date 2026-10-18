@@ -78,24 +78,26 @@ body::before {
   animation: scan 8s linear infinite;
 }
 
-/* NAV as a vertical column on desktop */
+/* NAV: fixed vertical sidebar */
 nav {
-  position: sticky;
+  position: fixed;       /* stay visible while scrolling */
+  left: 28px;
   top: 28px;
-  z-index: 10;
+  z-index: 50;
   display: flex;
   flex-direction: column; /* vertical links */
   align-items: stretch;
   gap: 12px;
   width: 220px; /* fixed sidebar width */
   max-width: 28vw;
-  margin: 0; /* not centered anymore */
+  height: calc(100vh - 56px);
   padding: 18px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: rgba(7, 11, 20, 0.45);
-  box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 0 18px rgba(255, 79, 216, 0.04);
+  box-shadow: 0 12px 40px rgba(2,6,23,0.6), inset 0 0 18px rgba(255, 79, 216, 0.04);
   backdrop-filter: blur(10px) saturate(120%);
+  overflow: auto;
 }
 
 nav a {
@@ -128,11 +130,11 @@ nav a.active {
   box-shadow: 0 6px 20px rgba(255, 79, 216, 0.28), 0 0 28px rgba(103, 232, 249, 0.22);
 }
 
-/* main content area */
+/* main content area: offset to the right of fixed sidebar */
 #app {
   flex: 1 1 680px; /* grow to fill remaining space */
   width: min(980px, 100%);
-  margin: 0; /* side-by-side with nav */
+  margin: 0; /* controlled by left offset instead */
   padding: 28px 30px 32px;
   border: 1px solid rgba(103,232,249,0.06);
   border-radius: 18px;
@@ -143,6 +145,7 @@ nav a.active {
     0 0 28px rgba(255, 79, 216, 0.04);
   position: relative;
   z-index: 2;
+  margin-left: 260px; /* nav width (220) + gap/breathing room */
 }
 
 h2, h3, h4 {
@@ -205,7 +208,7 @@ a:hover {
   margin-top: 0.25rem;
 }
 
-/* responsive: stack nav above content on small screens */
+/* responsive: stack nav above content on small screens and disable fixed positioning */
 @media (max-width: 880px) {
   body {
     flex-direction: column;
@@ -214,6 +217,10 @@ a:hover {
   }
 
   nav {
+    position: static; /* disable fixed sidebar on small screens */
+    top: auto;
+    left: auto;
+    height: auto;
     width: min(980px, 100%);
     flex-direction: row; /* horizontal pill nav for small screens */
     align-items: center;
@@ -226,5 +233,5 @@ a:hover {
 
   nav a { justify-content: center; min-width: 72px; padding: 9px 12px; }
 
-  #app { width: min(980px, 100%); padding: 22px 18px 24px; border-radius: 16px; }
+  #app { width: min(980px, 100%); padding: 22px 18px 24px; border-radius: 16px; margin-left: 0; }
 }
