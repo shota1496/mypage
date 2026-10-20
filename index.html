@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Change color mode">Color Mode</button>
   <nav>
     <a href="#home" id="link-home">Home</a>
     <a href="#about" id="link-about">About</a>
@@ -89,9 +90,66 @@
       `;
     const routes = {
       home: homeContent,
-      about: "<h2>About</h2><p>This is a simple Single Page Application (SPA) built with vanilla JavaScript. It demonstrates basic routing and dynamic content rendering without using any frameworks.</p>",
+      about: "<h2>About</h2><p>This is a simple Single Page Application (SPA) built with vanilla JavaScript. It demonstrates basic routing and dynamic content rendering without using any framework.</p>",
       contact: "<h2>Contact</h2><p><a href=\"mailto:shota_ishikuro@outlook.com\">Contact us</a></p>",
     };
+
+    const themes = [
+      {
+        name: 'Neon',
+        bg1: '#03040a',
+        bg2: '#071025',
+        cyan: '#67e8f9',
+        pink: '#ff4fd8',
+        lime: '#b5ff7d',
+        text: '#e5f4ff',
+        muted: '#b9d6ef',
+        border: 'rgba(103, 232, 249, 0.22)',
+      },
+      {
+        name: 'Sunset',
+        bg1: '#120c0d',
+        bg2: '#2b1016',
+        cyan: '#fbbf24',
+        pink: '#fb7185',
+        lime: '#fca5a5',
+        text: '#fff7ed',
+        muted: '#fed7aa',
+        border: 'rgba(251, 191, 36, 0.28)',
+      },
+      {
+        name: 'Forest',
+        bg1: '#071a14',
+        bg2: '#112b22',
+        cyan: '#6ee7b7',
+        pink: '#34d399',
+        lime: '#bbf7d0',
+        text: '#ecfdf5',
+        muted: '#d1fae5',
+        border: 'rgba(110, 231, 183, 0.25)',
+      }
+    ];
+
+    let themeIndex = 0;
+    const themeToggle = document.getElementById('themeToggle');
+
+    function applyTheme(index) {
+      const theme = themes[index];
+      document.documentElement.style.setProperty('--bg-1', theme.bg1);
+      document.documentElement.style.setProperty('--bg-2', theme.bg2);
+      document.documentElement.style.setProperty('--cyan', theme.cyan);
+      document.documentElement.style.setProperty('--pink', theme.pink);
+      document.documentElement.style.setProperty('--lime', theme.lime);
+      document.documentElement.style.setProperty('--text', theme.text);
+      document.documentElement.style.setProperty('--muted', theme.muted);
+      document.documentElement.style.setProperty('--border', theme.border);
+      themeToggle.textContent = `Color Mode: ${theme.name}`;
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeIndex = (themeIndex + 1) % themes.length;
+      applyTheme(themeIndex);
+    });
 
     // ページ描画関数
     function renderPage() {
@@ -110,7 +168,7 @@
     // ハッシュ変更時にページ更新
     window.addEventListener("hashchange", renderPage);
 
-    // 初期表示
+    applyTheme(themeIndex);
     renderPage();
   </script>
 </body>
