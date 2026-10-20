@@ -22,7 +22,23 @@ html {
   scroll-behavior: smooth;
 }
 
-/* layout: make body a horizontal flex container so nav sits vertically on the left */
+@keyframes scan {
+  0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+  50% { background-position: -10px -10px, 8px 6px, 2px 1px, -3px 3px; }
+  100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 0 rgba(103, 232, 249, 0), 0 0 0 rgba(255, 79, 216, 0); }
+  50% { box-shadow: 0 0 18px rgba(103, 232, 249, 0.18), 0 0 22px rgba(255, 79, 216, 0.18); }
+  100% { box-shadow: 0 0 0 rgba(103, 232, 249, 0), 0 0 0 rgba(255, 79, 216, 0); }
+}
+
+@keyframes floatAura {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate3d(0, -8px, 0) scale(1.04); opacity: 1; }
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -33,23 +49,22 @@ body {
     radial-gradient(circle at 85% 18%, rgba(103, 232, 249, 0.06), transparent 16%),
     linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 60%);
   display: flex;
-  flex-direction: row; /* <-- vertical nav on left, content on right */
+  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 28px; /* space between nav and content */
+  gap: 28px;
   padding: 40px 18px;
   position: relative;
   overflow-x: hidden;
 }
 
-/* subtle futuristic grid overlay */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   mix-blend-mode: overlay;
-  opacity: 0.12; /* subtle */
+  opacity: 0.12;
   background-image:
     linear-gradient(transparent 0.98px, rgba(103,232,249,0.06) 0.98px),
     linear-gradient(90deg, transparent 0.98px, rgba(255,79,216,0.035) 0.98px),
@@ -57,14 +72,7 @@ body::after {
     radial-gradient(circle at 85% 20%, rgba(255,79,216,0.03), transparent 10%);
   background-size: 28px 28px, 28px 28px, 600px 600px, 700px 700px;
   filter: blur(0.6px) saturate(120%);
-  transform: translateZ(0);
-}
-
-/* a faint animated scanline for life */
-@keyframes scan {
-  0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
-  50% { background-position: -10px -10px, 8px 6px, 2px 1px, -3px 3px; }
-  100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+  animation: floatAura 10s ease-in-out infinite;
 }
 
 body::before {
@@ -78,17 +86,39 @@ body::before {
   animation: scan 8s linear infinite;
 }
 
-/* NAV: fixed vertical sidebar */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(103, 232, 249, 0.12), rgba(255, 79, 216, 0.12));
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(103, 232, 249, 0.16), 0 0 24px rgba(255, 79, 216, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 20px rgba(103, 232, 249, 0.28), 0 0 28px rgba(255, 79, 216, 0.18);
+}
+
 nav {
-  position: fixed;       /* stay visible while scrolling */
+  position: fixed;
   left: 28px;
   top: 28px;
   z-index: 50;
   display: flex;
-  flex-direction: column; /* vertical links */
+  flex-direction: column;
   align-items: stretch;
   gap: 12px;
-  width: 220px; /* fixed sidebar width */
+  width: 220px;
   max-width: 28vw;
   height: calc(100vh - 56px);
   padding: 18px;
@@ -98,13 +128,14 @@ nav {
   box-shadow: 0 12px 40px rgba(2,6,23,0.6), inset 0 0 18px rgba(255, 79, 216, 0.04);
   backdrop-filter: blur(10px) saturate(120%);
   overflow: auto;
+  animation: glowPulse 5s ease-in-out infinite;
 }
 
 nav a {
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start; /* left-align label */
+  justify-content: flex-start;
   gap: 10px;
   width: 100%;
   padding: 12px 14px;
@@ -130,11 +161,10 @@ nav a.active {
   box-shadow: 0 6px 20px rgba(255, 79, 216, 0.28), 0 0 28px rgba(103, 232, 249, 0.22);
 }
 
-/* main content area: offset to the right of fixed sidebar */
 #app {
-  flex: 1 1 680px; /* grow to fill remaining space */
+  flex: 1 1 680px;
   width: min(980px, 100%);
-  margin: 0; /* controlled by left offset instead */
+  margin: 0;
   padding: 28px 30px 32px;
   border: 1px solid rgba(103,232,249,0.06);
   border-radius: 18px;
@@ -145,7 +175,22 @@ nav a.active {
     0 0 28px rgba(255, 79, 216, 0.04);
   position: relative;
   z-index: 2;
-  margin-left: 260px; /* nav width (220) + gap/breathing room */
+  margin-left: 260px;
+  overflow: hidden;
+}
+
+#app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(103,232,249,0.05) 48%, transparent 100%);
+  transform: translateX(-100%);
+  animation: sheen 8s ease-in-out infinite;
+}
+
+@keyframes sheen {
+  0% { transform: translateX(-100%); }
+  40%, 100% { transform: translateX(100%); }
 }
 
 h2, h3, h4 {
@@ -208,7 +253,6 @@ a:hover {
   margin-top: 0.25rem;
 }
 
-/* responsive: stack nav above content on small screens and disable fixed positioning */
 @media (max-width: 880px) {
   body {
     flex-direction: column;
@@ -217,12 +261,12 @@ a:hover {
   }
 
   nav {
-    position: static; /* disable fixed sidebar on small screens */
+    position: static;
     top: auto;
     left: auto;
     height: auto;
     width: min(980px, 100%);
-    flex-direction: row; /* horizontal pill nav for small screens */
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -252,6 +296,13 @@ a:hover {
   body {
     padding: 14px 10px 20px;
     gap: 14px;
+  }
+
+  .theme-toggle {
+    position: static;
+    margin: 0 auto 8px;
+    width: 100%;
+    max-width: 220px;
   }
 
   nav {
